@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-client-2-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-client-2
+  template:
+    metadata:
+      labels:
+        app: react-client-2
+    spec:
+      containers:
+        - name: react-client-2
+          image: docker12fozxe/react-client-2
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-client-2-srv
+spec:
+  selector:
+    app: react-client-2
+  ports:
+    - name: react-client-2
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
