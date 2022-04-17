@@ -24,3 +24,10 @@ spec:
                 name: react-client-srv
                 port:
                   number: 3000
+          - path: /next(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: react-client-2-srv
+                port:
+                  number: 3000
